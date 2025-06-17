@@ -3,11 +3,11 @@ name: Rust CI & Release
 # ------------- 触发条件 -------------
 on:
   push:
-    branches: [main] # push 到 main 触发 CI 和 Release PR
+    branches: [main, master] # push 到 main 触发 CI 和 Release PR
     tags:
       - "v*" # push 标签时触发构建和发布
   pull_request:
-    branches: [main] # PR 提交到 main 分支时触发 CI
+    branches: [main, master] # PR 提交到 main 分支时触发 CI
 
 permissions:
   contents: write # 允许操作代码库内容，用于 release-please 和 changelog
