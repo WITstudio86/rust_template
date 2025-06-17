@@ -30,8 +30,8 @@ jobs:
       - name: Release Please Action
         uses: googleapis/release-please-action@v4
         with:
-          release-type: rust # Rust 项目
-          package-name: myapp # 替换成你的 crate 名称，须与 Cargo.toml 中一致
+          release-type: rust
+          package-name: rust_template  # 修正为 Cargo.toml 中的实际包名
           token: ${{ secrets.GITHUB_TOKEN }}
           changelog-types: |
             [
