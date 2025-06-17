@@ -1,0 +1,56 @@
+[tasks.format]
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.deny]
+install_crate="cargo-deny"
+command = "cargo"
+args = ["deny" , "check"]
+
+[tasks.typos]
+install_crate="typos-cli"
+command = "typos"
+# dependencies = ["deny"]
+
+[tasks.check_all]
+command = "cargo"
+args = ["check" , "--all"]
+# dependencies = ["typos"]
+
+[tasks.clippy]# 一种代码风格检查工具
+command = "cargo"
+args = ["clippy" , "--all-features" , "--tests" , "--benches" , "--", "-D" , "warnings"]
+# dependencies = ["check"]
+
+[tasks.test]
+install_crate="cargo-nextest"
+command = "cargo"
+# --no-fail-fast: 测试失败时立即停止运行测试，而不是继续运行其余测试
+# --no-capture: 不捕获测试输出，直接打印到控制台
+# --no-tests=pass: 如果没有测试用例运行，静默退出并返回成功状态码
+args = ["nextest", "run", "--no-fail-fast", "--no-capture", "--no-tests=pass"]
+# dependencies = ["clippy"]
+
+[tasks.cliff_gen]
+install_crate="git-cliff"
+command = "git"
+args = ["cliff" , "-o" , "CHANGELOG.md"]
+dependencies = ["commit"]
+
+[tasks.cliff]
+install_crate="git"
+command = "git"
+args = ["commit" , "-m" , "chore: update CHANGELOG.md"]
+dependencies = ["cliff_gen"]
+
+
+
+[tasks.check]
+dependencies = [
+    "format",
+    "deny",
+    "typos",
+    "check_all",
+    "clippy",
+    "test",
+]
