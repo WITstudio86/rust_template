@@ -31,7 +31,7 @@ jobs:
         uses: googleapis/release-please-action@v4
         with:
           release-type: rust
-          package-name: rust_template  # 修正为 Cargo.toml 中的实际包名
+          package-name: rust_template # 修正为 Cargo.toml 中的实际包名
           token: ${{ secrets.GITHUB_TOKEN }}
           changelog-types: |
             [
@@ -109,7 +109,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.repository.split('/')[1] }}-${{ matrix.os }}
+          name: ${{ github.event.repository.name }}-${{ matrix.os }}
           path: dist/*
           if-no-files-found: error
 
