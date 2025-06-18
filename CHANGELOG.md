@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/WITstudio86/rust_template/compare/v0.1.0...v0.1.1) (2025-06-18)
+
+
+### Bug Fixes
+
+* 避免 publish release 被跳过 ([5c23e1e](https://github.com/WITstudio86/rust_template/commit/5c23e1ec973bf682ec56e8c6f0bbfe6c3cf91855))
+
 ## 0.1.0 (2025-06-17)
 
 
