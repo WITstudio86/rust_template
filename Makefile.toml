@@ -31,19 +31,6 @@ command = "cargo"
 args = ["nextest", "run", "--no-fail-fast", "--no-capture", "--no-tests=pass"]
 # dependencies = ["clippy"]
 
-[tasks.cliff]
-install_crate="git-cliff"
-command = "git"
-args = ["cliff" , "-o" , "CHANGELOG.md"]
-
-[tasks.changelog]
-install_crate="git"
-command = "git"
-args = ["commit" , "-m" , "chore: update CHANGELOG.md"]
-dependencies = ["cliff"]
-
-
-
 [tasks.check]
 dependencies = [
     "format",
